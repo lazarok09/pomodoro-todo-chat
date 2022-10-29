@@ -34,12 +34,8 @@ I may be abble to create others todo with a + button
 
 ## Todo functions
 
-- Create todo
 - List todos
-- Delete todos
 - Delete todoById
-
-Plus: drag and move todo with index, by grab with mouse
 
 ## Todo storage
 
