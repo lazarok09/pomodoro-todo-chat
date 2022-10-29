@@ -10,17 +10,27 @@ The purpose behind the scenes when i was thinking on create a todo-list, beside 
 
 A first todo, which consist on a input with a children text and a id.
 
-## Create
-
-I may be abble to create others todo with a + button
-
 ## Check
 
 I may be abble to check my todo when click on label or checkbox
 
+## Todos
+
+Todos is a component which can construct todo
+
+## Todos delete
+
+Todos can handle delete a todo of yours todosList
+
 ## Delete
 
 I may be abble to delete a todo when i click on delete button
+
+# Outside todo
+
+## Create
+
+I may be abble to create others todo with a + button
 
 ## Todo functions
 
