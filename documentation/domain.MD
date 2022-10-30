@@ -37,6 +37,11 @@ I may be abble to create others todo with a + button
 - List todos
 - Delete todoById
 
+# Second step
+
+Todo feed
+Should be abble to give a todo's name
+
 ## Todo storage
 
 Todo's can be storage on localStorage
