@@ -1,0 +1,19 @@
+.todos {
+  background: #292929;
+  border-radius: 30px;
+  min-height: 334px;
+  width: fit-content;
+  padding: 35px 42px 0 42px;
+  font-family: "Roboto", sans-serif;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  &__create_todo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    margin: 0 auto;
+    border: 1px solid rebeccapurple;
+  }
+}

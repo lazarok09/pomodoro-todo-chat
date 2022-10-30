@@ -28,10 +28,14 @@ describe("<Todo />", () => {
       name: todoChildrenText,
     });
     const todoDeleteButton = screen.getByTitle(`delete ${todoChildrenText}`);
+    const todoDeleteButtonIcon = screen.getByAltText(
+      `delete ${todoChildrenText}`
+    );
 
     expect(todoLabel).toBeInTheDocument();
     expect(todoCheckbox).not.toBeChecked();
     expect(todoDeleteButton).toBeInTheDocument();
+    expect(todoDeleteButtonIcon).toBeInTheDocument();
   });
   it("should check/uncheck a todo by click", () => {
     const { todoChildrenText, todoId } = makeTodo();

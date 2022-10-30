@@ -29,7 +29,10 @@ describe("<Todos />", () => {
     );
 
     const todoDeleteButton = screen.getByTitle(`delete ${todos[0].labelText}`);
+    const todoCreateButton = screen.getByAltText(`create new todo`);
+
     expect(todoDeleteButton).toBeInTheDocument();
+    expect(todoCreateButton).toBeInTheDocument();
 
     // first click
     fireEvent.click(todoDeleteButton);
@@ -55,5 +58,19 @@ describe("<Todos />", () => {
     // first click
     fireEvent.click(todoCreateButton);
     expect(mockedCreateTodo).toHaveBeenCalledTimes(1);
+  });
+  it("should return nothing if no todo-list is provided", () => {
+    const mockedDeleteFirstTodo = jest.fn();
+    const mockedCreateTodo = jest.fn();
+    const {
+      container: { children },
+    } = render(
+      <Todos
+        todoList={[]}
+        handleButtonDelete={mockedDeleteFirstTodo}
+        handleCreateTodo={mockedCreateTodo}
+      />
+    );
+    expect(children[0]).toBe(undefined);
   });
 });

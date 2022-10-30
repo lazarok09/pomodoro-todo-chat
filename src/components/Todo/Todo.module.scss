@@ -1,0 +1,23 @@
+.todo {
+  font-size: 18px;
+  display: flex;
+  background: #292929;
+  color: white;
+  width: 251px;
+  gap: 4px;
+
+  align-content: center;
+  align-items: center;
+
+  &__label {
+    font-weight: bold;
+    width: 171px;
+    overflow: hidden;
+  }
+  &__delete {
+    height: auto;
+    outline: none;
+    background: none;
+    border: none;
+  }
+}
