@@ -7,3 +7,8 @@ Test-Driven Development is some of the most important pratices/paradigm behind E
 
 For front-end developers maybe it will be confusing at first time, on the other hand you can always test other approach, but i think this will be my favorite for the next years. We can use a lot of other good pratices mixed with this one. Which can bring very good readability, uncoupled and robust code.
 
+<div align="center">
+  
+  <img src="https://i.imgur.com/ZKQbSCe.png" />
+  
+</div>
