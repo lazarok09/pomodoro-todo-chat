@@ -1,26 +1,30 @@
+import React from "react";
 import { Todo, TodoType } from "../Todo";
 
 import styles from "./Todos.module.scss";
 
 export type TodosProps = {
   todoList: TodoType[];
-  handleButtonDelete: (id: TodoType["id"]) => void;
+  handleButtonDelete: (todoId: string) => void;
+  handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
 };
 export const Todos = ({
   todoList = [],
   handleButtonDelete,
   handleCreateTodo,
+  handleInputTodo,
 }: TodosProps) => {
-  if (!todoList.length) return null;
   return (
     <section className={styles.todos}>
       {todoList.map((t) => (
         <Todo
-          id={t.id}
+          checkBoxId={t.checkBoxId}
           labelText={t.labelText}
-          key={t.id}
-          handleButtonDelete={() => handleButtonDelete(t.id)}
+          key={t.checkBoxId}
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodo={handleInputTodo}
+          inputTextId={t.inputTextId}
         />
       ))}
       <button

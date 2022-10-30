@@ -1,34 +1,45 @@
 import { TodoType } from "components/Todo";
 import { Todos } from "components/Todos";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const todos: TodoType[] = [
-    {
-      id: "123",
-      labelText: `ler game of thrones`,
-    },
-    {
-      id: `1234`,
-      labelText: `eminem music`,
-    },
-  ];
-  const [todoList, setTodoList] = useState<TodoType[]>(todos);
+  const [todoList, setTodoList] = useState<TodoType[]>([]);
 
   const handleButtonDelete = (todoId: string) => {
-    setTodoList((prevValues) => prevValues.filter((t) => t.id !== todoId));
+    setTodoList((prevValues) =>
+      prevValues?.filter((t) => t.checkBoxId !== todoId)
+    );
   };
 
   const handleCreateTodo = () => {
     setTodoList((prevValues) => [
       ...prevValues,
       {
-        id: (prevValues.length + 1).toString(),
+        checkBoxId: (prevValues.length + 1).toString(),
+        inputTextId: ((prevValues.length + 1) * Math.random()).toString(),
         labelText: Math.random().toString(),
       },
     ]);
+  };
+
+  const handleInputTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputTextValue = event.target.value;
+    const inputId = event.target.id;
+
+    const newTodoList = todoList.map((t) => {
+      if (t.inputTextId === inputId) {
+        return {
+          ...t,
+          labelText: inputTextValue,
+        };
+      }
+      return {
+        ...t,
+      };
+    });
+    setTodoList(newTodoList);
   };
 
   return (
@@ -36,6 +47,7 @@ export default function Home() {
       <Todos
         handleCreateTodo={handleCreateTodo}
         handleButtonDelete={handleButtonDelete}
+        handleInputTodo={handleInputTodo}
         todoList={todoList}
       />
     </div>

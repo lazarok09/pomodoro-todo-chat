@@ -1,28 +1,38 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  queryAllByRole,
+  render,
+  screen,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Todos } from "../Todos";
+import { TodoType } from "components/Todo";
 
 describe("<Todos />", () => {
-  function makeTodos() {
+  function makeTodos(): TodoType[] {
     return [
       {
-        id: "random id " + Math.random().toString(),
         labelText: "ler harry potter",
+        checkBoxId: "6234",
+        inputTextId: "1634",
       },
       {
-        id: "random id" + Math.random().toString(),
         labelText: "ler game of thrones",
+        checkBoxId: "65234",
+        inputTextId: "434",
       },
     ];
   }
   it("should verify if a todo delete has been clicked", () => {
     const todos = makeTodos();
     const mockedDeleteFirstTodo = jest.fn();
+    const handleInputTodo = jest.fn();
     const {
       container: { children },
     } = render(
       <Todos
         handleCreateTodo={() => {}}
+        handleInputTodo={handleInputTodo}
         todoList={todos}
         handleButtonDelete={mockedDeleteFirstTodo}
       />
@@ -42,11 +52,13 @@ describe("<Todos />", () => {
     const todos = makeTodos();
     const mockedDeleteFirstTodo = jest.fn();
     const mockedCreateTodo = jest.fn();
+    const handleInputTodo = jest.fn();
     const {
       container: { children },
     } = render(
       <Todos
         todoList={todos}
+        handleInputTodo={handleInputTodo}
         handleButtonDelete={mockedDeleteFirstTodo}
         handleCreateTodo={mockedCreateTodo}
       />
@@ -62,15 +74,20 @@ describe("<Todos />", () => {
   it("should return nothing if no todo-list is provided", () => {
     const mockedDeleteFirstTodo = jest.fn();
     const mockedCreateTodo = jest.fn();
+    const handleInputTodo = jest.fn();
+
     const {
       container: { children },
     } = render(
       <Todos
         todoList={[]}
+        handleInputTodo={handleInputTodo}
         handleButtonDelete={mockedDeleteFirstTodo}
         handleCreateTodo={mockedCreateTodo}
       />
     );
-    expect(children[0]).toBe(undefined);
+    const inputText = screen.queryByPlaceholderText("digite");
+
+    expect(inputText).not.toBeInTheDocument();
   });
 });
