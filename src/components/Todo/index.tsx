@@ -11,8 +11,15 @@ import styles from "./Todo.module.scss";
 export const Todo = ({ labelText, id, handleButtonDelete }: TodoProps) => {
   return (
     <article className={styles.todo}>
-      <input id={id} type={"checkbox"} title={labelText} />
-      <label htmlFor={id}>{labelText}</label>
+      <input
+        id={id}
+        type={"checkbox"}
+        className={styles.todo__checkbox}
+        title={labelText}
+      />
+      <label htmlFor={id} className={styles.todo__label}>
+        {labelText}
+      </label>
       <button
         onClick={handleButtonDelete}
         title={`delete ${labelText}`}

@@ -59,4 +59,18 @@ describe("<Todos />", () => {
     fireEvent.click(todoCreateButton);
     expect(mockedCreateTodo).toHaveBeenCalledTimes(1);
   });
+  it("should return nothing if no todo-list is provided", () => {
+    const mockedDeleteFirstTodo = jest.fn();
+    const mockedCreateTodo = jest.fn();
+    const {
+      container: { children },
+    } = render(
+      <Todos
+        todoList={[]}
+        handleButtonDelete={mockedDeleteFirstTodo}
+        handleCreateTodo={mockedCreateTodo}
+      />
+    );
+    expect(children[0]).toBe(undefined);
+  });
 });

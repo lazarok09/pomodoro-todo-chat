@@ -8,10 +8,10 @@ export default function Home() {
   const todos: TodoType[] = [
     {
       id: "123",
-      labelText: `eminem music`,
+      labelText: `ler game of thrones`,
     },
     {
-      id: `123`,
+      id: `1234`,
       labelText: `eminem music`,
     },
   ];

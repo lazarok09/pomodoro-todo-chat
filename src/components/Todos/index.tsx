@@ -8,10 +8,11 @@ export type TodosProps = {
   handleCreateTodo: () => void;
 };
 export const Todos = ({
-  todoList,
+  todoList = [],
   handleButtonDelete,
   handleCreateTodo,
 }: TodosProps) => {
+  if (!todoList.length) return null;
   return (
     <section className={styles.todos}>
       {todoList.map((t) => (
@@ -22,7 +23,11 @@ export const Todos = ({
           handleButtonDelete={() => handleButtonDelete(t.id)}
         />
       ))}
-      <button onClick={handleCreateTodo} title={`create todo`}>
+      <button
+        onClick={handleCreateTodo}
+        className={styles.todos__create_todo}
+        title={`create todo`}
+      >
         <img src={"/create.svg"} alt={`create new todo`} height={24} />
       </button>
     </section>
