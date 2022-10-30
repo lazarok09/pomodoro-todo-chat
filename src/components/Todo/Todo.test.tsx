@@ -76,4 +76,25 @@ describe("<Todo />", () => {
     const inputText = screen.getByPlaceholderText("digite");
     expect(inputText).toBeInTheDocument();
   });
+  it("should auto focus input when created", () => {
+    const { todoChildrenText, todoId, inputTextId } = makeTodo();
+    const handleButtonDelete = jest.fn();
+    const handleInputTodo = jest.fn();
+
+    const {
+      container: { children },
+    } = render(
+      <Todo
+        handleButtonDelete={handleButtonDelete}
+        handleInputTodo={handleInputTodo}
+        checkBoxId={todoId}
+        inputTextId={inputTextId}
+        labelText={todoChildrenText}
+      />
+    );
+
+    const inputText = screen.getByPlaceholderText("digite");
+    expect(inputText).toBeInTheDocument();
+    expect(inputText).toHaveFocus();
+  });
 });

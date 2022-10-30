@@ -2,6 +2,8 @@ import { TodoType } from "components/Todo";
 import { Todos } from "components/Todos";
 
 import React, { useState } from "react";
+import { makeTodo } from "utils/factory/todo";
+import { getRandomId } from "utils/random";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -14,14 +16,9 @@ export default function Home() {
   };
 
   const handleCreateTodo = () => {
-    setTodoList((prevValues) => [
-      ...prevValues,
-      {
-        checkBoxId: (prevValues.length + 1).toString(),
-        inputTextId: ((prevValues.length + 1) * Math.random()).toString(),
-        labelText: Math.random().toString(),
-      },
-    ]);
+    const todo = makeTodo();
+
+    setTodoList((prevValues) => [...prevValues, todo]);
   };
 
   const handleInputTodo = (event: React.ChangeEvent<HTMLInputElement>) => {

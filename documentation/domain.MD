@@ -12,7 +12,11 @@ A first todo, which consist on a input with a children text and a id.
 
 ## Check
 
-I may be abble to check my todo when click on label or checkbox
+I may be abble to check my todo when click on checkbox
+
+## Edit
+
+I may be abble to edit a todo clickin on the text
 
 ## Todos
 

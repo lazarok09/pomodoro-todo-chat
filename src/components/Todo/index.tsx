@@ -33,6 +33,7 @@ export const Todo = ({
           id={inputTextId}
           placeholder={"digite"}
           onChange={handleInputTodo}
+          autoFocus={true}
         />
       </label>
       <button
