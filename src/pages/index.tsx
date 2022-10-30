@@ -24,7 +24,10 @@ export default function Home() {
   const handleCreateTodo = () => {
     setTodoList((prevValues) => [
       ...prevValues,
-      { id: Math.random().toString(), labelText: Math.random().toString() },
+      {
+        id: (prevValues.length + 1).toString(),
+        labelText: Math.random().toString(),
+      },
     ]);
   };
 
