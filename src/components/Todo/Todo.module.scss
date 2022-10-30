@@ -1,0 +1,15 @@
+.todo {
+  font-size: 18px;
+  display: flex;
+  padding: 0 42px;
+  background: #292929;
+  color: white;
+  width: 251px;
+
+  &__delete {
+    height: 18px;
+    border: none;
+    outline: none;
+    background: none;
+  }
+}

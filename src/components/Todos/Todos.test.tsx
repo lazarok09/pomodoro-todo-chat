@@ -29,7 +29,10 @@ describe("<Todos />", () => {
     );
 
     const todoDeleteButton = screen.getByTitle(`delete ${todos[0].labelText}`);
+    const todoCreateButton = screen.getByAltText(`create new todo`);
+
     expect(todoDeleteButton).toBeInTheDocument();
+    expect(todoCreateButton).toBeInTheDocument();
 
     // first click
     fireEvent.click(todoDeleteButton);

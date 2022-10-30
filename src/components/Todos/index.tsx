@@ -1,5 +1,6 @@
 import { Todo, TodoType } from "../Todo";
-import { Fragment } from "react";
+
+import styles from "./Todos.module.scss";
 
 export type TodosProps = {
   todoList: TodoType[];
@@ -12,7 +13,7 @@ export const Todos = ({
   handleCreateTodo,
 }: TodosProps) => {
   return (
-    <Fragment>
+    <section className={styles.todos}>
       {todoList.map((t) => (
         <Todo
           id={t.id}
@@ -22,8 +23,8 @@ export const Todos = ({
         />
       ))}
       <button onClick={handleCreateTodo} title={`create todo`}>
-        +
+        <img src={"/create.svg"} alt={`create new todo`} height={24} />
       </button>
-    </Fragment>
+    </section>
   );
 };
