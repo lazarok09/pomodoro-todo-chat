@@ -7,8 +7,31 @@ Test-Driven Development is some of the most important pratices/paradigm behind E
 
 For front-end developers maybe it will be confusing at first time, on the other hand you can always test other approach, but i think this will be my favorite for the next years. We can use a lot of other good pratices mixed with this one. Which can bring very good readability, uncoupled and robust code.
 
-<div align="center">
+### Figma
+You check the [Figma Design](https://www.figma.com/file/61pOQcQHCrn4nH3fwSejDh/Pomodoro-em-Grupo---Versao-1?node-id=124%3A36)
+but i warn you, this is not art
+
+<br>
+
+<div align="center" target="__blank">
+
+<h3>First idea for web-desktop based app </h3>
+<br>
+
+  <a href="https://www.figma.com/file/61pOQcQHCrn4nH3fwSejDh/Pomodoro-em-Grupo---Versao-1?node-id=124%3A36">
   
+  <img src="https://i.imgur.com/aRctBLa.png" />
+  
+  </a>
+  
+</div>
+
+<br>
+<hr>
+<br>
+
+<div align="center">
+  <h3>Tests with jest</h3>
   <img src="https://i.imgur.com/ZKQbSCe.png" />
   
 </div>
