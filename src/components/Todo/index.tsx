@@ -9,7 +9,7 @@ export type TodoProps = {
 } & TodoType;
 
 import React from "react";
-import styles from "./Todo.module.scss";
+import * as Styled from "./styles";
 
 export const Todo = ({
   labelText,
@@ -19,14 +19,9 @@ export const Todo = ({
   handleInputTodo,
 }: TodoProps) => {
   return (
-    <article className={styles.todo}>
-      <input
-        id={checkBoxId}
-        type={"checkbox"}
-        className={styles.todo__checkbox}
-        title={labelText}
-      />
-      <label htmlFor={checkBoxId} className={styles.todo__label}>
+    <Styled.Todo>
+      <input id={checkBoxId} type={"checkbox"} title={labelText} />
+      <Styled.Label htmlFor={checkBoxId}>
         <input
           type="text"
           value={labelText}
@@ -35,14 +30,13 @@ export const Todo = ({
           onChange={handleInputTodo}
           autoFocus={true}
         />
-      </label>
-      <button
+      </Styled.Label>
+      <Styled.Delete
         onClick={() => handleButtonDelete(checkBoxId)}
         title={`delete ${labelText}`}
-        className={styles.todo__delete}
       >
         <img src={"/delete.svg"} alt={`delete ${labelText}`} />
-      </button>
-    </article>
+      </Styled.Delete>
+    </Styled.Todo>
   );
 };

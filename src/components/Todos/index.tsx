@@ -1,7 +1,7 @@
 import React from "react";
 import { Todo, TodoType } from "../Todo";
 
-import styles from "./Todos.module.scss";
+import * as Styled from "./styles";
 
 export type TodosProps = {
   todoList: TodoType[];
@@ -16,7 +16,7 @@ export const Todos = ({
   handleInputTodo,
 }: TodosProps) => {
   return (
-    <section className={styles.todos}>
+    <Styled.Todos>
       {todoList.map((t) => (
         <Todo
           checkBoxId={t.checkBoxId}
@@ -27,13 +27,13 @@ export const Todos = ({
           inputTextId={t.inputTextId}
         />
       ))}
-      <button
+      <Styled.Create
         onClick={handleCreateTodo}
-        className={styles.todos__create_todo}
+        className={"todos__create_todo"}
         title={`create todo`}
       >
         <img src={"/create.svg"} alt={`create new todo`} height={24} />
-      </button>
-    </section>
+      </Styled.Create>
+    </Styled.Todos>
   );
 };
