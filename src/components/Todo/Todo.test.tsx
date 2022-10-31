@@ -111,8 +111,16 @@ describe("<Todo />", () => {
     });
     const inputText = screen.getByPlaceholderText("digite");
 
+    // First click
     fireEvent.click(todoCheckbox);
+
     expect(todoCheckbox).toBeChecked();
-    // expect(inputText).toHaveStyle("text-decoration: line-throughaaaa");
+    expect(inputText).toHaveStyle({ "text-decoration": "line-through" });
+
+    // Second click
+    fireEvent.click(todoCheckbox);
+
+    expect(todoCheckbox).not.toBeChecked();
+    expect(inputText).not.toHaveStyle({ "text-decoration": "line-through" });
   });
 });
