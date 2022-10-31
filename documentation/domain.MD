@@ -30,6 +30,14 @@ Todos can handle delete a todo of yours todosList
 
 I may be abble to delete a todo when i click on delete button
 
+## Style
+
+My checkbox when toggled, i should see a line-through on the todo
+
+## Double click
+
+When i double click the input text, i should check the checkbox.
+
 # Outside todo
 
 ## Create

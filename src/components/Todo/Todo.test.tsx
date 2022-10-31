@@ -123,4 +123,32 @@ describe("<Todo />", () => {
     expect(todoCheckbox).not.toBeChecked();
     expect(inputText).not.toHaveStyle({ "text-decoration": "line-through" });
   });
+  it("should double click the input and check the parent checkbox", () => {
+    const { labelText, checkBoxId, inputTextId } = makeTodo("specific input");
+    const handleButtonDelete = jest.fn();
+    const handleInputTodo = jest.fn();
+
+    const {
+      container: { children },
+    } = render(
+      <Todo
+        handleButtonDelete={handleButtonDelete}
+        handleInputTodo={handleInputTodo}
+        checkBoxId={checkBoxId}
+        inputTextId={inputTextId}
+        labelText={labelText}
+      />
+    );
+
+    const todoCheckbox = screen.getByRole("checkbox", {
+      name: "specific input",
+    });
+    const inputText = screen.getByPlaceholderText("digite");
+
+    // First click
+
+    fireEvent.doubleClick(inputText);
+    expect(inputText).toHaveStyle({ "text-decoration": "line-through" });
+    expect(todoCheckbox).toBeChecked();
+  });
 });
