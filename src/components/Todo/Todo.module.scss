@@ -13,11 +13,22 @@
     font-weight: bold;
     width: 171px;
     overflow: hidden;
+    input[type="text"] {
+      background: none;
+      outline: none;
+      border: none;
+    }
   }
   &__delete {
     height: auto;
     outline: none;
     background: none;
     border: none;
+  }
+  input {
+    text-decoration: line-through;
+  }
+  input[type="checkbox"]:checked + label > input {
+    text-decoration: line-through;
   }
 }

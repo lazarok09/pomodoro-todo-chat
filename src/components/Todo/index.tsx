@@ -13,7 +13,7 @@ import styles from "./Todo.module.scss";
 
 export const Todo = ({
   labelText,
-  checkBoxId: id,
+  checkBoxId,
   inputTextId,
   handleButtonDelete,
   handleInputTodo,
@@ -21,12 +21,12 @@ export const Todo = ({
   return (
     <article className={styles.todo}>
       <input
-        id={id}
+        id={checkBoxId}
         type={"checkbox"}
         className={styles.todo__checkbox}
         title={labelText}
       />
-      <label htmlFor={id} className={styles.todo__label}>
+      <label htmlFor={checkBoxId} className={styles.todo__label}>
         <input
           type="text"
           value={labelText}
@@ -37,7 +37,7 @@ export const Todo = ({
         />
       </label>
       <button
-        onClick={() => handleButtonDelete(id)}
+        onClick={() => handleButtonDelete(checkBoxId)}
         title={`delete ${labelText}`}
         className={styles.todo__delete}
       >
