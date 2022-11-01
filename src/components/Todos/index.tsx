@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { Todo, TodoType } from "../Todo";
 
@@ -32,7 +33,12 @@ export const Todos = ({
         className={"todos__create_todo"}
         title={`create todo`}
       >
-        <img src={"/create.svg"} alt={`create new todo`} height={24} />
+        <Image
+          src={"/create.svg"}
+          alt={`create new todo`}
+          height={34}
+          width={27}
+        />
       </Styled.Create>
     </Styled.Todos>
   );

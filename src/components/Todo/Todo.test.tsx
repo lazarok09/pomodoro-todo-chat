@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import { makeTodo } from "utils/factory/todo";
+import { renderTheme } from "utils/renderTheme";
 import { Todo } from "../Todo";
 
 describe("<Todo />", () => {
@@ -12,13 +13,15 @@ describe("<Todo />", () => {
     const {
       container: { children },
     } = render(
-      <Todo
-        handleButtonDelete={handleButtonDelete}
-        checkBoxId={checkBoxId}
-        labelText={labelText}
-        inputTextId={inputTextId}
-        handleInputTodo={handleInputTodo}
-      />
+      renderTheme(
+        <Todo
+          handleButtonDelete={handleButtonDelete}
+          checkBoxId={checkBoxId}
+          labelText={labelText}
+          inputTextId={inputTextId}
+          handleInputTodo={handleInputTodo}
+        />
+      )
     );
 
     const inputText = screen.getByPlaceholderText("digite");
@@ -43,13 +46,15 @@ describe("<Todo />", () => {
     const {
       container: { children },
     } = render(
-      <Todo
-        handleButtonDelete={handleButtonDelete}
-        handleInputTodo={handleInputTodo}
-        checkBoxId={checkBoxId}
-        inputTextId={inputTextId}
-        labelText={labelText}
-      />
+      renderTheme(
+        <Todo
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodo={handleInputTodo}
+          checkBoxId={checkBoxId}
+          inputTextId={inputTextId}
+          labelText={labelText}
+        />
+      )
     );
 
     const todoCheckbox = screen.getByRole("checkbox", {
@@ -76,13 +81,15 @@ describe("<Todo />", () => {
     const {
       container: { children },
     } = render(
-      <Todo
-        handleButtonDelete={handleButtonDelete}
-        handleInputTodo={handleInputTodo}
-        checkBoxId={checkBoxId}
-        inputTextId={inputTextId}
-        labelText={labelText}
-      />
+      renderTheme(
+        <Todo
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodo={handleInputTodo}
+          checkBoxId={checkBoxId}
+          inputTextId={inputTextId}
+          labelText={labelText}
+        />
+      )
     );
 
     const inputText = screen.getByPlaceholderText("digite");
@@ -97,13 +104,15 @@ describe("<Todo />", () => {
     const {
       container: { children },
     } = render(
-      <Todo
-        handleButtonDelete={handleButtonDelete}
-        handleInputTodo={handleInputTodo}
-        checkBoxId={checkBoxId}
-        inputTextId={inputTextId}
-        labelText={labelText}
-      />
+      renderTheme(
+        <Todo
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodo={handleInputTodo}
+          checkBoxId={checkBoxId}
+          inputTextId={inputTextId}
+          labelText={labelText}
+        />
+      )
     );
 
     const todoCheckbox = screen.getByRole("checkbox", {
@@ -131,13 +140,15 @@ describe("<Todo />", () => {
     const {
       container: { children },
     } = render(
-      <Todo
-        handleButtonDelete={handleButtonDelete}
-        handleInputTodo={handleInputTodo}
-        checkBoxId={checkBoxId}
-        inputTextId={inputTextId}
-        labelText={labelText}
-      />
+      renderTheme(
+        <Todo
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodo={handleInputTodo}
+          checkBoxId={checkBoxId}
+          inputTextId={inputTextId}
+          labelText={labelText}
+        />
+      )
     );
 
     const todoCheckbox = screen.getByRole("checkbox", {

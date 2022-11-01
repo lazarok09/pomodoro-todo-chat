@@ -7,6 +7,8 @@ import {
 import "@testing-library/jest-dom";
 import { Todos } from "../Todos";
 import { TodoType } from "components/Todo";
+import { ThemeProvider } from "styled-components";
+import { renderTheme } from "utils/renderTheme";
 
 describe("<Todos />", () => {
   function makeTodos(): TodoType[] {
@@ -23,6 +25,7 @@ describe("<Todos />", () => {
       },
     ];
   }
+
   it("should verify if a todo delete has been clicked", () => {
     const todos = makeTodos();
     const mockedDeleteFirstTodo = jest.fn();
@@ -30,12 +33,14 @@ describe("<Todos />", () => {
     const {
       container: { children },
     } = render(
-      <Todos
-        handleCreateTodo={() => {}}
-        handleInputTodo={handleInputTodo}
-        todoList={todos}
-        handleButtonDelete={mockedDeleteFirstTodo}
-      />
+      renderTheme(
+        <Todos
+          handleCreateTodo={() => {}}
+          handleInputTodo={handleInputTodo}
+          todoList={todos}
+          handleButtonDelete={mockedDeleteFirstTodo}
+        />
+      )
     );
 
     const todoDeleteButton = screen.getByTitle(`delete ${todos[0].labelText}`);
@@ -56,12 +61,14 @@ describe("<Todos />", () => {
     const {
       container: { children },
     } = render(
-      <Todos
-        todoList={todos}
-        handleInputTodo={handleInputTodo}
-        handleButtonDelete={mockedDeleteFirstTodo}
-        handleCreateTodo={mockedCreateTodo}
-      />
+      renderTheme(
+        <Todos
+          todoList={todos}
+          handleInputTodo={handleInputTodo}
+          handleButtonDelete={mockedDeleteFirstTodo}
+          handleCreateTodo={mockedCreateTodo}
+        />
+      )
     );
 
     const todoCreateButton = screen.getByTitle("create todo");
@@ -79,12 +86,14 @@ describe("<Todos />", () => {
     const {
       container: { children },
     } = render(
-      <Todos
-        todoList={[]}
-        handleInputTodo={handleInputTodo}
-        handleButtonDelete={mockedDeleteFirstTodo}
-        handleCreateTodo={mockedCreateTodo}
-      />
+      renderTheme(
+        <Todos
+          todoList={[]}
+          handleInputTodo={handleInputTodo}
+          handleButtonDelete={mockedDeleteFirstTodo}
+          handleCreateTodo={mockedCreateTodo}
+        />
+      )
     );
     const inputText = screen.queryByPlaceholderText("digite");
 

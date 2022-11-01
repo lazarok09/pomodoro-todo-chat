@@ -7,7 +7,13 @@ import { getRandomId } from "utils/random";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [todoList, setTodoList] = useState<TodoType[]>([]);
+  const [todoList, setTodoList] = useState<TodoType[]>([
+    {
+      checkBoxId: "1",
+      inputTextId: "2",
+      labelText: "LER GAME OF THRONES",
+    },
+  ]);
 
   const handleButtonDelete = (todoId: string) => {
     setTodoList((prevValues) =>

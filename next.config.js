@@ -2,9 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  styledComponents: {
-    fileName: true,
-    displayName: true,
+  compiler: {
+    styledComponents: {
+      fileName: true,
+      displayName: true,
+      ssr: true,
+    },
   },
 };
 
