@@ -2,6 +2,7 @@ export type TodoItemType = {
   checkBoxId: string;
   labelText: string;
   inputTextId: string;
+  inputChecked?: boolean;
 };
 export type TodoItemProps = {
   handleButtonDelete: (TodoItemId: string) => void;
@@ -16,6 +17,7 @@ export const TodoItem = ({
   labelText,
   checkBoxId,
   inputTextId,
+  inputChecked = false,
   handleButtonDelete,
   handleInputTodoItem,
 }: TodoItemProps) => {
@@ -29,7 +31,13 @@ export const TodoItem = ({
   }
   return (
     <Styled.TodoItem>
-      <input id={checkBoxId} type={"checkbox"} title={labelText} ref={ref} />
+      <input
+        id={checkBoxId}
+        type={"checkbox"}
+        title={labelText}
+        ref={ref}
+        defaultChecked={inputChecked}
+      />
       <Styled.Label htmlFor={checkBoxId}>
         <input
           type="text"

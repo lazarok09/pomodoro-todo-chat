@@ -1,4 +1,4 @@
-import { TodoItemType } from "components/Todo";
+import { TodoItemType } from "components/TodoItem";
 import { getRandomId } from "../random";
 
 export function makeTodoItem(labelText?: string): TodoItemType {

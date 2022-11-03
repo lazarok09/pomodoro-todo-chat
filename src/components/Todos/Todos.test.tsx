@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Todos } from "../Todos";
 import { renderTheme } from "utils/renderTheme";
-import { TodoItemType } from "components/Todo";
+import { TodoItemType } from "components/TodoItem";
 
 describe("<Todos />", () => {
   function makeTodos(): TodoItemType[] {

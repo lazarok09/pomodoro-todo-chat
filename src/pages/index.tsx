@@ -1,58 +1,12 @@
-import { TodoType } from "components/Todo";
-import { Todos } from "components/Todos";
+import Todo from "containers/Todo";
 
-import React, { useState } from "react";
-import { makeTodo } from "utils/factory/todo";
-import { getRandomId } from "utils/random";
+import React from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [todoList, setTodoList] = useState<TodoType[]>([
-    {
-      checkBoxId: "1",
-      inputTextId: "2",
-      labelText: "LER GAME OF THRONES",
-    },
-  ]);
-
-  const handleButtonDelete = (todoId: string) => {
-    setTodoList((prevValues) =>
-      prevValues?.filter((t) => t.checkBoxId !== todoId)
-    );
-  };
-
-  const handleCreateTodo = () => {
-    const todo = makeTodo();
-
-    setTodoList((prevValues) => [...prevValues, todo]);
-  };
-
-  const handleInputTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputTextValue = event.target.value;
-    const inputId = event.target.id;
-
-    const newTodoList = todoList.map((t) => {
-      if (t.inputTextId === inputId) {
-        return {
-          ...t,
-          labelText: inputTextValue,
-        };
-      }
-      return {
-        ...t,
-      };
-    });
-    setTodoList(newTodoList);
-  };
-
   return (
     <div className={styles.container}>
-      <Todos
-        handleCreateTodo={handleCreateTodo}
-        handleButtonDelete={handleButtonDelete}
-        handleInputTodo={handleInputTodo}
-        todoList={todoList}
-      />
+      <Todo />
     </div>
   );
 }

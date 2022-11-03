@@ -1,4 +1,4 @@
-import { TodoItem, TodoItemType } from "components/Todo";
+import { TodoItem, TodoItemType } from "components/TodoItem";
 import Image from "next/image";
 import React from "react";
 
