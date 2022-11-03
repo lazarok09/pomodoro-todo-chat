@@ -1,17 +1,11 @@
-import {
-  fireEvent,
-  queryAllByRole,
-  render,
-  screen,
-} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Todos } from "../Todos";
-import { TodoType } from "components/Todo";
-import { ThemeProvider } from "styled-components";
 import { renderTheme } from "utils/renderTheme";
+import { TodoItemType } from "components/Todo";
 
 describe("<Todos />", () => {
-  function makeTodos(): TodoType[] {
+  function makeTodos(): TodoItemType[] {
     return [
       {
         labelText: "ler harry potter",
@@ -95,6 +89,29 @@ describe("<Todos />", () => {
         />
       )
     );
+    const inputText = screen.queryByPlaceholderText("digite");
+
+    expect(inputText).not.toBeInTheDocument();
+  });
+
+  it("should start todo with saved todo's on local storage", () => {
+    const mockedDeleteFirstTodo = jest.fn();
+    const mockedCreateTodo = jest.fn();
+    const handleInputTodo = jest.fn();
+
+    const {
+      container: { children },
+    } = render(
+      renderTheme(
+        <Todos
+          todoList={[]}
+          handleInputTodo={handleInputTodo}
+          handleButtonDelete={mockedDeleteFirstTodo}
+          handleCreateTodo={mockedCreateTodo}
+        />
+      )
+    );
+
     const inputText = screen.queryByPlaceholderText("digite");
 
     expect(inputText).not.toBeInTheDocument();

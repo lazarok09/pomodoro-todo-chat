@@ -1,11 +1,11 @@
+import { TodoItem, TodoItemType } from "components/Todo";
 import Image from "next/image";
 import React from "react";
-import { Todo, TodoType } from "../Todo";
 
 import * as Styled from "./styles";
 
 export type TodosProps = {
-  todoList: TodoType[];
+  todoList: TodoItemType[];
   handleButtonDelete: (todoId: string) => void;
   handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
@@ -19,12 +19,12 @@ export const Todos = ({
   return (
     <Styled.Todos>
       {todoList.map((t) => (
-        <Todo
+        <TodoItem
           checkBoxId={t.checkBoxId}
           labelText={t.labelText}
           key={t.checkBoxId}
           handleButtonDelete={handleButtonDelete}
-          handleInputTodo={handleInputTodo}
+          handleInputTodoItem={handleInputTodo}
           inputTextId={t.inputTextId}
         />
       ))}

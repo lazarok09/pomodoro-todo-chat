@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-export const Todo = styled.div`
+export const TodoItem = styled.div`
   ${({ theme }) => css`
     font-size: 18px;
     display: flex;

@@ -1,24 +1,24 @@
-export type TodoType = {
+export type TodoItemType = {
   checkBoxId: string;
   labelText: string;
   inputTextId: string;
 };
-export type TodoProps = {
-  handleButtonDelete: (todoId: string) => void;
-  handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
-} & TodoType;
+export type TodoItemProps = {
+  handleButtonDelete: (TodoItemId: string) => void;
+  handleInputTodoItem: (event: React.ChangeEvent<HTMLInputElement>) => void;
+} & TodoItemType;
 
 import Image from "next/image";
 import React, { useRef } from "react";
 import * as Styled from "./styles";
 
-export const Todo = ({
+export const TodoItem = ({
   labelText,
   checkBoxId,
   inputTextId,
   handleButtonDelete,
-  handleInputTodo,
-}: TodoProps) => {
+  handleInputTodoItem,
+}: TodoItemProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   function dragstart_handler(ev: any) {
@@ -28,7 +28,7 @@ export const Todo = ({
     ev.dataTransfer.setData("text/uri-list", "http://developer.mozilla.org");
   }
   return (
-    <Styled.Todo>
+    <Styled.TodoItem>
       <input id={checkBoxId} type={"checkbox"} title={labelText} ref={ref} />
       <Styled.Label htmlFor={checkBoxId}>
         <input
@@ -36,7 +36,7 @@ export const Todo = ({
           value={labelText}
           id={inputTextId}
           placeholder={"digite"}
-          onChange={handleInputTodo}
+          onChange={handleInputTodoItem}
           autoFocus={true}
           onDoubleClick={() => {
             ref.current?.click();
@@ -54,6 +54,6 @@ export const Todo = ({
           alt={`delete ${labelText}`}
         />
       </Styled.Delete>
-    </Styled.Todo>
+    </Styled.TodoItem>
   );
 };
