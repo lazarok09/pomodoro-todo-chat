@@ -1,35 +1,45 @@
-import { Todo, TodoType } from "../Todo";
+import { TodoItem, TodoItemType } from "components/TodoItem";
+import Image from "next/image";
+import React from "react";
 
-import styles from "./Todos.module.scss";
+import * as Styled from "./styles";
 
 export type TodosProps = {
-  todoList: TodoType[];
-  handleButtonDelete: (id: TodoType["id"]) => void;
+  todoList: TodoItemType[];
+  handleButtonDelete: (todoId: string) => void;
+  handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
 };
 export const Todos = ({
   todoList = [],
   handleButtonDelete,
   handleCreateTodo,
+  handleInputTodo,
 }: TodosProps) => {
-  if (!todoList.length) return null;
   return (
-    <section className={styles.todos}>
+    <Styled.Todos>
       {todoList.map((t) => (
-        <Todo
-          id={t.id}
+        <TodoItem
+          checkBoxId={t.checkBoxId}
           labelText={t.labelText}
-          key={t.id}
-          handleButtonDelete={() => handleButtonDelete(t.id)}
+          key={t.checkBoxId}
+          handleButtonDelete={handleButtonDelete}
+          handleInputTodoItem={handleInputTodo}
+          inputTextId={t.inputTextId}
         />
       ))}
-      <button
+      <Styled.Create
         onClick={handleCreateTodo}
-        className={styles.todos__create_todo}
+        className={"todos__create_todo"}
         title={`create todo`}
       >
-        <img src={"/create.svg"} alt={`create new todo`} height={24} />
-      </button>
-    </section>
+        <Image
+          src={"/create.svg"}
+          alt={`create new todo`}
+          height={34}
+          width={27}
+        />
+      </Styled.Create>
+    </Styled.Todos>
   );
 };
