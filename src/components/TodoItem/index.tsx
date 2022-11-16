@@ -1,9 +1,3 @@
-export type TodoItemType = {
-  checkBoxId: string;
-  labelText: string;
-  inputTextId: string;
-  inputChecked?: boolean;
-};
 export type TodoItemProps = {
   handleButtonDelete: (TodoItemId: string) => void;
   handleInputTodoItem: (event: React.ChangeEvent<HTMLInputElement>) => void;
