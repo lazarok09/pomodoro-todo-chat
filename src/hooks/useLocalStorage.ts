@@ -1,3 +1,4 @@
+import { defaultTodosState } from "context/todo/Todo";
 import { useEffect, useState } from "react";
 
 export const useLocalStorage = () => {
@@ -10,7 +11,11 @@ export const useLocalStorage = () => {
       localStorage?.getItem("todo-list") as string
     );
 
-    setTodoList(todoListStorage);
+    if (!todoListStorage) {
+      setTodoList(defaultTodosState);
+    } else {
+      setTodoList(todoListStorage);
+    }
   }, []);
   return { todoList, setTodoList };
 };
