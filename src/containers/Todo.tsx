@@ -1,25 +1,21 @@
 import { createTodo, deleteTodo, updateTodo } from "actions/todo";
 import { Todos } from "components/Todos";
 import { TodosContext } from "context/todo/context";
-import { TodoActionsKind, todoDefaultState } from "context/todo/Todo";
+import { addTodosOnLocalStorage } from "context/todo/Todo";
 
 import React, { useContext } from "react";
-import { makeTodoItem } from "utils/factory/todoItem";
 
 export const Todo = () => {
   const { todos, dispatch } = useContext(TodosContext);
 
   const handleButtonDelete = (todoId: string) => {
     deleteTodo(todoId, dispatch);
-    // addTodosOnLocalStorage(filteredValues);
+    addTodosOnLocalStorage(todos);
   };
 
   const handleCreateTodo = () => {
     createTodo(dispatch);
-  };
-
-  const addTodosOnLocalStorage = (todoList: TodoItemType[]) => {
-    localStorage.setItem("todo-list", JSON.stringify(todoList));
+    addTodosOnLocalStorage(todos);
   };
 
   const handleInputTodoChange = (
@@ -30,8 +26,7 @@ export const Todo = () => {
     });
     if (!todoTarget) return;
     updateTodo(event, todoTarget, dispatch);
-
-    // addTodosOnLocalStorage(newTodoList);
+    addTodosOnLocalStorage(todos);
   };
 
   return (

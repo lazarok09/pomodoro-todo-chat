@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useStorageTodoList = () => {
+export const useLocalStorage = () => {
   const [todoList, setTodoList] = useState<TodoItemType[]>([]);
 
   useEffect(() => {
@@ -9,10 +9,8 @@ export const useStorageTodoList = () => {
     const todoListStorage = JSON?.parse(
       localStorage?.getItem("todo-list") as string
     );
-    if (Object?.keys(todoList) !== Object?.keys(todoListStorage)) {
-      setTodoList(todoListStorage);
-    }
-  }, []);
 
+    setTodoList(todoListStorage);
+  }, []);
   return { todoList, setTodoList };
 };

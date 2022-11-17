@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+import { useLocalStorage } from "hooks/useLocalStorage";
+import React, { useEffect, useReducer, useState } from "react";
 import { makeTodoItem } from "utils/factory/todoItem";
 import { TodosContext } from "./context";
 
@@ -10,12 +11,12 @@ export enum TodoActionsKind {
 }
 export type TodoAction = {
   type: TodoActionsKind;
-  payload: typeof todoDefaultState[0];
+  payload: typeof defaultTodosState[0];
   todoId?: TodoItemType["inputTextId"];
   newTodos?: TodoItemType[];
 };
 
-export const todoDefaultState = [makeTodoItem()];
+export const defaultTodosState = [makeTodoItem()];
 
 function reducer(state: TodoItemType[], action: TodoAction) {
   const { payload, type, todoId, newTodos } = action;
@@ -57,8 +58,21 @@ function reducer(state: TodoItemType[], action: TodoAction) {
 type TodosProviderProps = {
   children: React.ReactNode;
 };
+export const addTodosOnLocalStorage = (todoList: TodoItemType[]) => {
+  localStorage.setItem("todo-list", JSON.stringify(todoList));
+};
 export const TodosProvider = ({ children }: TodosProviderProps) => {
-  const [todos, dispatch] = useReducer(reducer, todoDefaultState);
+  const { todoList } = useLocalStorage();
+
+  const [todos, dispatch] = useReducer(reducer, todoList);
+
+  useEffect(() => {
+    dispatch({
+      type: TodoActionsKind.SET_TODOS,
+      newTodos: todoList,
+      payload: makeTodoItem(),
+    });
+  }, [todoList]);
 
   return (
     <TodosContext.Provider value={{ todos, dispatch }}>
