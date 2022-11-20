@@ -26,7 +26,7 @@ export const Todos = ({
           handleButtonDelete={handleButtonDelete}
           handleInputTodoItem={handleInputTodo}
           inputTextId={t.inputTextId}
-          inputChecked={false}
+          inputChecked={t.inputChecked}
         />
       ))}
       <Styled.Create
