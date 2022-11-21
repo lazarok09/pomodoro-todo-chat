@@ -28,12 +28,27 @@ export const Todo = () => {
     updateTodo(event, todoTarget, dispatch);
     addTodosOnLocalStorage(todos);
   };
+  const handleInputTodoCheckBox = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const todoTarget = todos?.find((t) => {
+      return t?.checkBoxId === event.target.id;
+    });
 
+    if (!todoTarget) return;
+    updateTodo(
+      event,
+      { ...todoTarget, inputChecked: event.target.checked },
+      dispatch
+    );
+    addTodosOnLocalStorage(todos);
+  };
   return (
     <Todos
       handleCreateTodo={handleCreateTodo}
       handleButtonDelete={handleButtonDelete}
       handleInputTodo={handleInputTodoChange}
+      handleInputTodoCheckBox={handleInputTodoCheckBox}
       todoList={todos}
     />
   );

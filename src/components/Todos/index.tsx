@@ -8,6 +8,7 @@ export type TodosProps = {
   todoList: TodoItemType[];
   handleButtonDelete: (todoId: string) => void;
   handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputTodoCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
 };
 export const Todos = ({
@@ -15,6 +16,7 @@ export const Todos = ({
   handleButtonDelete,
   handleCreateTodo,
   handleInputTodo,
+  handleInputTodoCheckBox,
 }: TodosProps) => {
   return (
     <Styled.Todos>
@@ -25,6 +27,7 @@ export const Todos = ({
           key={t.checkBoxId}
           handleButtonDelete={handleButtonDelete}
           handleInputTodoItem={handleInputTodo}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
           inputTextId={t.inputTextId}
           inputChecked={t.inputChecked}
         />

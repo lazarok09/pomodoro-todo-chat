@@ -1,6 +1,7 @@
 export type TodoItemProps = {
   handleButtonDelete: (TodoItemId: string) => void;
   handleInputTodoItem: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputTodoCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & TodoItemType;
 
 import Image from "next/image";
@@ -14,6 +15,7 @@ export const TodoItem = ({
   inputChecked = false,
   handleButtonDelete,
   handleInputTodoItem,
+  handleInputTodoCheckBox,
 }: TodoItemProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
@@ -29,6 +31,7 @@ export const TodoItem = ({
         id={checkBoxId}
         type={"checkbox"}
         title={labelText}
+        onChange={handleInputTodoCheckBox}
         ref={ref}
         defaultChecked={inputChecked}
       />
