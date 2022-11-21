@@ -1,4 +1,4 @@
-import { TodoItem, TodoItemType } from "components/TodoItem";
+import { TodoItem } from "components/TodoItem";
 import Image from "next/image";
 import React from "react";
 
@@ -26,6 +26,7 @@ export const Todos = ({
           handleButtonDelete={handleButtonDelete}
           handleInputTodoItem={handleInputTodo}
           inputTextId={t.inputTextId}
+          inputChecked={t.inputChecked}
         />
       ))}
       <Styled.Create

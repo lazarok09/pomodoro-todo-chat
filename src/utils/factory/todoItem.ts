@@ -1,10 +1,9 @@
-import { TodoItemType } from "components/TodoItem";
 import { getRandomId } from "../random";
-
 export function makeTodoItem(labelText?: string): TodoItemType {
   return {
-    checkBoxId: getRandomId().toString(),
-    inputTextId: getRandomId().toString(),
+    checkBoxId: Date.now().toString(),
+    inputTextId: Date.now().toString(),
     labelText: labelText ?? "",
+    inputChecked: false,
   };
 }

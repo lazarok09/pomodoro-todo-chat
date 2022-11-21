@@ -1,69 +1,40 @@
-import { TodoItemType } from "components/TodoItem";
+import { createTodo, deleteTodo, updateTodo } from "actions/todo";
 import { Todos } from "components/Todos";
-import React, { useCallback, useEffect, useState } from "react";
-import { makeTodoItem } from "utils/factory/todoItem";
+import { TodosContext } from "context/todo/context";
+import { addTodosOnLocalStorage } from "context/todo/Todo";
+
+import React, { useContext } from "react";
 
 export const Todo = () => {
-  const [todoList, setTodoList] = useState<TodoItemType[]>([]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const todoListStorage = JSON?.parse(
-      localStorage?.getItem("todo-list") as string
-    );
-    if (Object.keys(todoList) !== Object.keys(todoListStorage)) {
-      setTodoList(todoListStorage);
-    }
-  }, []);
+  const { todos, dispatch } = useContext(TodosContext);
 
   const handleButtonDelete = (todoId: string) => {
-    setTodoList((prevValues) => {
-      const filteredValues = prevValues?.filter((t) => t.checkBoxId !== todoId);
-      addTodosOnLocalStorage(filteredValues);
-      return filteredValues;
-    });
+    deleteTodo(todoId, dispatch);
+    addTodosOnLocalStorage(todos);
   };
 
   const handleCreateTodo = () => {
-    const todo = makeTodoItem();
-
-    setTodoList((prevValues) => {
-      const mappedValues = [...prevValues, todo];
-      addTodosOnLocalStorage(mappedValues);
-      return mappedValues;
-    });
+    createTodo(dispatch);
+    addTodosOnLocalStorage(todos);
   };
 
-  const addTodosOnLocalStorage = (todoList: TodoItemType[]) => {
-    localStorage.setItem("todo-list", JSON.stringify(todoList));
-  };
-
-  const handleInputTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputTextValue = event.target.value;
-    const inputId = event.target.id;
-
-    const newTodoList = todoList.map((t) => {
-      if (t.inputTextId === inputId) {
-        return {
-          ...t,
-          labelText: inputTextValue,
-        };
-      }
-      return {
-        ...t,
-      };
+  const handleInputTodoChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const todoTarget = todos?.find((t) => {
+      return t?.inputTextId === event.target.id;
     });
-    setTodoList(newTodoList);
-    addTodosOnLocalStorage(newTodoList);
+    if (!todoTarget) return;
+    updateTodo(event, todoTarget, dispatch);
+    addTodosOnLocalStorage(todos);
   };
 
   return (
     <Todos
       handleCreateTodo={handleCreateTodo}
       handleButtonDelete={handleButtonDelete}
-      handleInputTodo={handleInputTodo}
-      todoList={todoList}
+      handleInputTodo={handleInputTodoChange}
+      todoList={todos}
     />
   );
 };
