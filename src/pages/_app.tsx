@@ -1,4 +1,3 @@
-import { EagleIcon } from "components/EagleIcon";
 import { TodosProvider } from "context/todo/Todo";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
@@ -9,7 +8,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <TodosProvider>
-        <EagleIcon altText={"eagle"} height={384} width={416} />
         <GlobalStyle />
         <Component {...pageProps} />
       </TodosProvider>
