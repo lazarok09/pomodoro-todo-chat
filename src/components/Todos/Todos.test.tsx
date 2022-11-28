@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Todos } from "../Todos";
+import { TodosGroup } from "../Todos";
 import { renderTheme } from "utils/renderTheme";
-import { TodoItemType } from "components/TodoItem";
 
 describe("<Todos />", () => {
   function makeTodos(): TodoItemType[] {
@@ -11,11 +10,13 @@ describe("<Todos />", () => {
         labelText: "ler harry potter",
         checkBoxId: "6234",
         inputTextId: "1634",
+        inputChecked: false,
       },
       {
         labelText: "ler game of thrones",
         checkBoxId: "65234",
         inputTextId: "434",
+        inputChecked: false,
       },
     ];
   }
@@ -24,14 +25,15 @@ describe("<Todos />", () => {
     const todos = makeTodos();
     const mockedDeleteFirstTodo = jest.fn();
     const handleInputTodo = jest.fn();
-    const {
-      container: { children },
-    } = render(
+    const handleInputTodoCheckBox = jest.fn();
+
+    render(
       renderTheme(
-        <Todos
+        <TodosGroup
           handleCreateTodo={() => {}}
           handleInputTodo={handleInputTodo}
           todoList={todos}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleButtonDelete={mockedDeleteFirstTodo}
         />
       )
@@ -52,15 +54,16 @@ describe("<Todos />", () => {
     const mockedDeleteFirstTodo = jest.fn();
     const mockedCreateTodo = jest.fn();
     const handleInputTodo = jest.fn();
-    const {
-      container: { children },
-    } = render(
+    const handleInputTodoCheckBox = jest.fn();
+
+    render(
       renderTheme(
-        <Todos
+        <TodosGroup
           todoList={todos}
           handleInputTodo={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
           handleCreateTodo={mockedCreateTodo}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
         />
       )
     );
@@ -76,15 +79,15 @@ describe("<Todos />", () => {
     const mockedDeleteFirstTodo = jest.fn();
     const mockedCreateTodo = jest.fn();
     const handleInputTodo = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
-    const {
-      container: { children },
-    } = render(
+    render(
       renderTheme(
-        <Todos
+        <TodosGroup
           todoList={[]}
           handleInputTodo={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleCreateTodo={mockedCreateTodo}
         />
       )
@@ -98,15 +101,15 @@ describe("<Todos />", () => {
     const mockedDeleteFirstTodo = jest.fn();
     const mockedCreateTodo = jest.fn();
     const handleInputTodo = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
-    const {
-      container: { children },
-    } = render(
+    render(
       renderTheme(
-        <Todos
+        <TodosGroup
           todoList={[]}
           handleInputTodo={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleCreateTodo={mockedCreateTodo}
         />
       )

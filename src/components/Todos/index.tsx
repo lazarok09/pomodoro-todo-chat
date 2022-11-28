@@ -4,22 +4,22 @@ import React from "react";
 
 import * as Styled from "./styles";
 
-export type TodosProps = {
+export type TodosGroup = {
   todoList: TodoItemType[];
   handleButtonDelete: (todoId: string) => void;
   handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleInputTodoCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
 };
-export const Todos = ({
+export const TodosGroup = ({
   todoList = [],
   handleButtonDelete,
   handleCreateTodo,
   handleInputTodo,
   handleInputTodoCheckBox,
-}: TodosProps) => {
+}: TodosGroup) => {
   return (
-    <Styled.Todos>
+    <Styled.TodosGroup>
       {todoList.map((t) => (
         <TodoItem
           checkBoxId={t.checkBoxId}
@@ -44,6 +44,6 @@ export const Todos = ({
           width={27}
         />
       </Styled.Create>
-    </Styled.Todos>
+    </Styled.TodosGroup>
   );
 };

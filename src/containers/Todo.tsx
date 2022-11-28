@@ -1,5 +1,5 @@
 import { createTodo, deleteTodo, updateTodo } from "actions/todo";
-import { Todos } from "components/Todos";
+import { TodosGroup } from "components/Todos";
 import { TodosContext } from "context/todo/context";
 import { addTodosOnLocalStorage } from "context/todo/Todo";
 
@@ -46,7 +46,7 @@ export const Todo = () => {
     }
   };
   return (
-    <Todos
+    <TodosGroup
       handleCreateTodo={handleCreateTodo}
       handleButtonDelete={handleButtonDelete}
       handleInputTodo={handleInputTodoChange}

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-export const Todos = styled.div`
+export const TodosGroup = styled.div`
   ${({ theme }) => css`
     background: #292929;
     border-radius: 30px;
