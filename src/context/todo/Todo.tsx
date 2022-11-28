@@ -1,4 +1,4 @@
-import { useLocalStorage } from "hooks/useLocalStorage";
+import { useDataFromLocalStorage } from "hooks/useLocalStorage";
 import React, { useEffect, useReducer, useState } from "react";
 import { makeTodoItem } from "utils/factory/todoItem";
 import { TodosContext } from "./context";
@@ -62,7 +62,8 @@ export const addTodosOnLocalStorage = (todoList: TodoItemType[]) => {
   localStorage.setItem("todo-list", JSON.stringify(todoList));
 };
 export const TodosProvider = ({ children }: TodosProviderProps) => {
-  const { todoList } = useLocalStorage();
+  const { data: todoList } =
+    useDataFromLocalStorage<TodoItemType[]>("todo-list");
 
   const [todos, dispatch] = useReducer(reducer, todoList);
 

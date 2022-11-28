@@ -24,9 +24,10 @@ export const Todo = () => {
     const todoTarget = todos?.find((t) => {
       return t?.inputTextId === event.target.id;
     });
-    if (!todoTarget) return;
-    updateTodo(event, todoTarget, dispatch);
-    addTodosOnLocalStorage(todos);
+    if (todoTarget) {
+      updateTodo(event, todoTarget, dispatch);
+      addTodosOnLocalStorage(todos);
+    }
   };
   const handleInputTodoCheckBox = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -35,13 +36,14 @@ export const Todo = () => {
       return t?.checkBoxId === event.target.id;
     });
 
-    if (!todoTarget) return;
-    updateTodo(
-      event,
-      { ...todoTarget, inputChecked: event.target.checked },
-      dispatch
-    );
-    addTodosOnLocalStorage(todos);
+    if (todoTarget) {
+      updateTodo(
+        event,
+        { ...todoTarget, inputChecked: event.target.checked },
+        dispatch
+      );
+      addTodosOnLocalStorage(todos);
+    }
   };
   return (
     <Todos
