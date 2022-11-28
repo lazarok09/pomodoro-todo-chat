@@ -11,6 +11,7 @@ describe("<TodoItem />", () => {
     const { labelText, checkBoxId, inputTextId } = makeTodoItem("input");
     const handleButtonDelete = jest.fn();
     const handleInputTodoItem = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
     const {
       container: { children },
     } = render(
@@ -21,6 +22,8 @@ describe("<TodoItem />", () => {
           labelText={labelText}
           inputTextId={inputTextId}
           handleInputTodoItem={handleInputTodoItem}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
+          inputChecked={false}
         />
       )
     );
@@ -43,6 +46,7 @@ describe("<TodoItem />", () => {
     const { labelText, checkBoxId, inputTextId } = makeTodoItem();
     const handleButtonDelete = jest.fn();
     const handleInputTodoItem = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
     const {
       container: { children },
@@ -54,6 +58,8 @@ describe("<TodoItem />", () => {
           checkBoxId={checkBoxId}
           inputTextId={inputTextId}
           labelText={labelText}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
+          inputChecked={false}
         />
       )
     );
@@ -78,6 +84,7 @@ describe("<TodoItem />", () => {
     const { labelText, checkBoxId, inputTextId } = makeTodoItem();
     const handleButtonDelete = jest.fn();
     const handleInputTodoItem = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
     const {
       container: { children },
@@ -89,6 +96,8 @@ describe("<TodoItem />", () => {
           checkBoxId={checkBoxId}
           inputTextId={inputTextId}
           labelText={labelText}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
+          inputChecked={false}
         />
       )
     );
@@ -102,6 +111,7 @@ describe("<TodoItem />", () => {
       makeTodoItem("specific input");
     const handleButtonDelete = jest.fn();
     const handleInputTodoItem = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
     const {
       container: { children },
@@ -113,6 +123,8 @@ describe("<TodoItem />", () => {
           checkBoxId={checkBoxId}
           inputTextId={inputTextId}
           labelText={labelText}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
+          inputChecked={false}
         />
       )
     );
@@ -139,6 +151,7 @@ describe("<TodoItem />", () => {
       makeTodoItem("specific input");
     const handleButtonDelete = jest.fn();
     const handleInputTodoItem = jest.fn();
+    const handleInputTodoCheckBox = jest.fn();
 
     const {
       container: { children },
@@ -150,6 +163,8 @@ describe("<TodoItem />", () => {
           checkBoxId={checkBoxId}
           inputTextId={inputTextId}
           labelText={labelText}
+          handleInputTodoCheckBox={handleInputTodoCheckBox}
+          inputChecked={false}
         />
       )
     );
