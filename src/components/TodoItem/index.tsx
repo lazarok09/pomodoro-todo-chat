@@ -19,12 +19,6 @@ export const TodoItem = ({
 }: TodoItemProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
-  function dragstart_handler(ev: any) {
-    // Adiciona os dados do arraste (drag)
-    ev.dataTransfer.setData("text/plain", ev.target.id);
-    ev.dataTransfer.setData("text/html", "<p>Parágrafo de exemplo</p>");
-    ev.dataTransfer.setData("text/uri-list", "http://developer.mozilla.org");
-  }
   return (
     <Styled.TodoItem>
       <input
