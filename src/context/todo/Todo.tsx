@@ -43,7 +43,7 @@ function reducer(state: TodoItemType[], action: TodoAction) {
     case TodoActionsKind.DELETE_TODO:
       if (!todoId) throw new Error("need a todo id");
 
-      return state.filter((t) => t.checkBoxId !== todoId);
+      return state.filter((todo) => todo.checkBoxId !== todoId);
 
     case TodoActionsKind.SET_TODOS:
       if (!newTodos) throw new Error("need a newTodos");
@@ -62,18 +62,18 @@ export const addTodosOnLocalStorage = (todoList: TodoItemType[]) => {
   localStorage.setItem("todo-list", JSON.stringify(todoList));
 };
 export const TodosProvider = ({ children }: TodosProviderProps) => {
-  const { data: todoList } =
+  const { data: todosFromLocalStorage } =
     useDataFromLocalStorage<TodoItemType[]>("todo-list");
 
-  const [todos, dispatch] = useReducer(reducer, todoList);
+  const [todos, dispatch] = useReducer(reducer, todosFromLocalStorage);
 
   useEffect(() => {
     dispatch({
       type: TodoActionsKind.SET_TODOS,
-      newTodos: todoList,
+      newTodos: todosFromLocalStorage,
       payload: makeTodoItem(),
     });
-  }, [todoList]);
+  }, [todosFromLocalStorage]);
 
   return (
     <TodosContext.Provider value={{ todos, dispatch }}>

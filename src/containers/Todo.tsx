@@ -21,8 +21,8 @@ export const Todo = () => {
   const handleInputTodoChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const todoTarget = todos?.find((t) => {
-      return t?.inputTextId === event.target.id;
+    const todoTarget = todos?.find((todo) => {
+      return todo?.inputTextId === event.target.id;
     });
     if (todoTarget) {
       updateTodo(event, todoTarget, dispatch);
@@ -32,8 +32,8 @@ export const Todo = () => {
   const handleInputTodoCheckBox = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const todoTarget = todos?.find((t) => {
-      return t?.checkBoxId === event.target.id;
+    const todoTarget = todos?.find((todo) => {
+      return todo?.checkBoxId === event.target.id;
     });
 
     if (todoTarget) {

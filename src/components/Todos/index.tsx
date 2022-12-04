@@ -20,16 +20,16 @@ export const TodosGroup = ({
 }: TodosGroup) => {
   return (
     <Styled.TodosGroup>
-      {todoList.map((t) => (
+      {todoList.map((todo) => (
         <TodoItem
-          checkBoxId={t.checkBoxId}
-          labelText={t.labelText}
-          key={t.checkBoxId}
+          checkBoxId={todo.checkBoxId}
+          labelText={todo.labelText}
+          key={todo.checkBoxId}
           handleButtonDelete={handleButtonDelete}
           handleInputTodoItem={handleInputTodo}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
-          inputTextId={t.inputTextId}
-          inputChecked={t.inputChecked}
+          inputTextId={todo.inputTextId}
+          inputChecked={todo.inputChecked}
         />
       ))}
       <Styled.Create

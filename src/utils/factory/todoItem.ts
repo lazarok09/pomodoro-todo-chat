@@ -1,4 +1,3 @@
-import { getRandomId } from "../random";
 export function makeTodoItem(labelText?: string): TodoItemType {
   return {
     checkBoxId: Date.now().toString(),
