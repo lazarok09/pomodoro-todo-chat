@@ -1,55 +1,66 @@
-import { createTodo, deleteTodo, updateTodo } from "actions/todo";
 import { TodosGroup } from "components/Todos";
 import { TodosContext } from "context/todo/context";
 import { addTodosOnLocalStorage } from "context/todo/Todo";
-
+import { makeTodoItem } from "../utils/factory/todoItem";
 import React, { useContext } from "react";
 
 export const Todo = () => {
-  const { todos, dispatch } = useContext(TodosContext);
+  const { todos, setTodos } = useContext(TodosContext);
 
   const handleButtonDelete = (todoId: string) => {
-    deleteTodo(todoId, dispatch);
-    addTodosOnLocalStorage(todos);
+    // deleteTodo
+    const filteredTodos = todos.filter((todo) => todo.inputTextId !== todoId);
+    setTodos(filteredTodos);
+    addTodosOnLocalStorage(filteredTodos);
   };
 
   const handleCreateTodo = () => {
-    createTodo(dispatch);
-    addTodosOnLocalStorage(todos);
+    // createTodo
+    const newTodos = todos.map((todo) => {
+      console.log("🚀 ~ file: Todo.tsx:22 ~ newTodos ~ todo", todo);
+      return { ...todo, ...makeTodoItem() };
+    });
+    setTodos(newTodos);
+    // add to local storage
+    addTodosOnLocalStorage(newTodos);
   };
+  console.log("🚀 ~ file: Todo.tsx:20 ~ handleCreateTodo ~ todos", todos);
 
   const handleInputTodoChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const todoTarget = todos?.find((todo) => {
-      return todo?.inputTextId === event.target.id;
+    const { id, value } = event.target;
+
+    const mappedValues = todos.map((todo) => {
+      if (todo.inputTextId === id) {
+        return { ...todo, labelText: value };
+      }
+      return todo;
     });
-    if (todoTarget) {
-      updateTodo(event, todoTarget, dispatch);
-      addTodosOnLocalStorage(todos);
-    }
+
+    setTodos(mappedValues);
   };
+
   const handleInputTodoCheckBox = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const todoTarget = todos?.find((todo) => {
-      return todo?.checkBoxId === event.target.id;
+    const { id, checked } = event.target;
+
+    const mappedValues = todos.map((todo) => {
+      if (todo.checkBoxId === id) {
+        return { ...todo, inputChecked: checked };
+      }
+      return todo;
     });
 
-    if (todoTarget) {
-      updateTodo(
-        event,
-        { ...todoTarget, inputChecked: event.target.checked },
-        dispatch
-      );
-      addTodosOnLocalStorage(todos);
-    }
+    setTodos(mappedValues);
   };
+
   return (
     <TodosGroup
       handleCreateTodo={handleCreateTodo}
       handleButtonDelete={handleButtonDelete}
-      handleInputTodo={handleInputTodoChange}
+      handleInputTodoChange={handleInputTodoChange}
       handleInputTodoCheckBox={handleInputTodoCheckBox}
       todoList={todos}
     />

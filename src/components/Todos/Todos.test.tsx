@@ -31,7 +31,7 @@ describe("<Todos />", () => {
       renderTheme(
         <TodosGroup
           handleCreateTodo={() => {}}
-          handleInputTodo={handleInputTodo}
+          handleInputTodoChange={handleInputTodo}
           todoList={todos}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleButtonDelete={mockedDeleteFirstTodo}
@@ -60,7 +60,7 @@ describe("<Todos />", () => {
       renderTheme(
         <TodosGroup
           todoList={todos}
-          handleInputTodo={handleInputTodo}
+          handleInputTodoChange={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
           handleCreateTodo={mockedCreateTodo}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
@@ -85,7 +85,7 @@ describe("<Todos />", () => {
       renderTheme(
         <TodosGroup
           todoList={[]}
-          handleInputTodo={handleInputTodo}
+          handleInputTodoChange={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleCreateTodo={mockedCreateTodo}
@@ -107,7 +107,7 @@ describe("<Todos />", () => {
       renderTheme(
         <TodosGroup
           todoList={[]}
-          handleInputTodo={handleInputTodo}
+          handleInputTodoChange={handleInputTodo}
           handleButtonDelete={mockedDeleteFirstTodo}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
           handleCreateTodo={mockedCreateTodo}

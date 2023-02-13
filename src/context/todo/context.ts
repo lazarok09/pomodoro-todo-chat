@@ -1,12 +1,11 @@
-import { createContext } from "react";
-import { TodoAction } from "./Todo";
+import React, { createContext } from "react";
 
 type TodosContextProps = {
   todos: TodoItemType[];
-  dispatch: React.Dispatch<TodoAction>;
+  setTodos: React.Dispatch<React.SetStateAction<TodoItemType[]>>;
 };
 export const TODOS_CONTEXT_STATE: TodosContextProps = {
-  dispatch: () => {},
+  setTodos: () => [],
   todos: [],
 };
 export const TodosContext =

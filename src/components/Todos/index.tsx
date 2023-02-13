@@ -7,7 +7,7 @@ import * as Styled from "./styles";
 export type TodosGroup = {
   todoList: TodoItemType[];
   handleButtonDelete: (todoId: string) => void;
-  handleInputTodo: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputTodoChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleInputTodoCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleCreateTodo: () => void;
 };
@@ -15,18 +15,18 @@ export const TodosGroup = ({
   todoList = [],
   handleButtonDelete,
   handleCreateTodo,
-  handleInputTodo,
+  handleInputTodoChange,
   handleInputTodoCheckBox,
 }: TodosGroup) => {
   return (
     <Styled.TodosGroup>
-      {todoList.map((todo) => (
+      {todoList?.map((todo) => (
         <TodoItem
           checkBoxId={todo.checkBoxId}
           labelText={todo.labelText}
           key={todo.checkBoxId}
           handleButtonDelete={handleButtonDelete}
-          handleInputTodoItem={handleInputTodo}
+          handleInputTodoItem={handleInputTodoChange}
           handleInputTodoCheckBox={handleInputTodoCheckBox}
           inputTextId={todo.inputTextId}
           inputChecked={todo.inputChecked}
