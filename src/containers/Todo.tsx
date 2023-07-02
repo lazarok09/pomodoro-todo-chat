@@ -1,30 +1,25 @@
 import { TodosGroup } from "components/Todos";
-import { TodosContext } from "context/todo/context";
-import { addTodosOnLocalStorage } from "context/todo/Todo";
+
 import { makeTodoItem } from "../utils/factory/todoItem";
-import React, { useContext } from "react";
+import React, { useState } from "react";
 
 export const Todo = () => {
-  const { todos, setTodos } = useContext(TodosContext);
+  const [todos, setTodos] = useState<TodoItemType[]>([]);
 
   const handleButtonDelete = (todoId: string) => {
     // deleteTodo
     const filteredTodos = todos.filter((todo) => todo.inputTextId !== todoId);
     setTodos(filteredTodos);
-    addTodosOnLocalStorage(filteredTodos);
   };
 
   const handleCreateTodo = () => {
     // createTodo
     const newTodos = todos.map((todo) => {
-      console.log("🚀 ~ file: Todo.tsx:22 ~ newTodos ~ todo", todo);
       return { ...todo, ...makeTodoItem() };
     });
     setTodos(newTodos);
     // add to local storage
-    addTodosOnLocalStorage(newTodos);
   };
-  console.log("🚀 ~ file: Todo.tsx:20 ~ handleCreateTodo ~ todos", todos);
 
   const handleInputTodoChange = (
     event: React.ChangeEvent<HTMLInputElement>
