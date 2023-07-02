@@ -4,7 +4,7 @@ import { makeTodoItem } from "../utils/factory/todoItem";
 import React, { useState } from "react";
 
 export const Todo = () => {
-  const [todos, setTodos] = useState<TodoItemType[]>([]);
+  const [todos, setTodos] = useState<TodoItemType[]>([makeTodoItem()]);
 
   const handleButtonDelete = (todoId: string) => {
     // deleteTodo
@@ -14,11 +14,9 @@ export const Todo = () => {
 
   const handleCreateTodo = () => {
     // createTodo
-    const newTodos = todos.map((todo) => {
-      return { ...todo, ...makeTodoItem() };
-    });
-    setTodos(newTodos);
-    // add to local storage
+    setTodos((prevState) => {
+      return [...prevState, makeTodoItem('Placeholder')]
+    })
   };
 
   const handleInputTodoChange = (
