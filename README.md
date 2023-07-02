@@ -7,11 +7,12 @@ Test-Driven Development is some of the most important pratices/paradigm behind E
 
 For front-end developers maybe it will be confusing at first time, on the other hand you can always test other approach, but i think this will be my favorite for the next years. We can use a lot of other good pratices mixed with this one. Which can bring very good readability, uncoupled and robust code.
 
-### Figma
-You check the [Figma Design](https://www.figma.com/file/61pOQcQHCrn4nH3fwSejDh/Pomodoro-em-Grupo---Versao-1?node-id=124%3A36)
-but i warn you, this is not art
+
 
 <br>
+
+
+
 
 <div align="center" target="__blank">
 
@@ -26,12 +27,50 @@ but i warn you, this is not art
   
 </div>
 
+<h3>Figma</h3>
+
+You check the [Figma Design](https://www.figma.com/file/61pOQcQHCrn4nH3fwSejDh/Pomodoro-em-Grupo---Versao-1?node-id=124%3A36)
+but i warn you, this is not art. I maded myself at that time in a couple of hours :D
+
 <br>
 <hr>
+
+<h2>Execute 🔺</h2>
+
+To run the project in development mode you can use either docker, or clone and install the dependecies. We have a Jest enviroment running some unit tests too.
+
+<br />
+
+<h3>Using Docker 🐋</h3>
+
+```bash
+  docker compose build
+  docker compose up
+```
+
+<br />
+
+<h3>Development Mode 👩‍💻</h3>
+
+```bash
+  npm install
+  npm run dev
+```
+
 <br>
 
+
+
+<h3>Test Runner 🔷</h3>
+
+Here we're using Jest for unity tests. You can run the commands to see tests.
+
+```
+  npm run test
+  npm run test --all
+```
+
 <div align="center">
-  <h3>Tests with jest</h3>
   <img src="https://i.imgur.com/ZKQbSCe.png" />
   
 </div>
